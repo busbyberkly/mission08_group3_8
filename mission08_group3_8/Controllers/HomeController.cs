@@ -23,11 +23,7 @@ namespace mission08_group3_8.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
+    
         [HttpGet]
         public IActionResult TaskForm()
         {
