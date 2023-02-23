@@ -3,4 +3,29 @@
 @{
     ViewData["Title"] = "Task Form";
 }
-<p>Enter Tasks here</p>
+<!-- at model mission08_group3_8.Models.Task-->
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <!--asp-for="Task">-->
+    <label>Task</label>
+    <input /> <br /><br />
+    <!--asp-for="Date"-->
+    <label>Due Date</label>
+    <input type="date" /><br /><br />
+    <!--asp-for="Quadrant"-->
+    <label>Quadrant</label>
+    <input /><br /><br />
+    <!--asp-for="Category"-->
+    <label>Category</label>
+    <select>
+        <option>Home</option>
+        <option>School</option>
+        <option>Work</option>
+        <option>Church</option>
+    </select><br /><br />
+    <!--asp-for="Completed"-->
+    <label>Completed</label>
+    <input type="radio" value="true" />Yes
+    <input type="radio" value="false" />No <br /><br />
+    <button type="submit">Submit</button>
+</form>
