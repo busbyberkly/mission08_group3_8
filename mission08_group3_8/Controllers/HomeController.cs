@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mission08_group3_8.Models;
 using System;
@@ -11,11 +12,13 @@ namespace mission08_group3_8.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private TaskContext TaskResponse { get; set; }
+        //constructor
+        public HomeController(TaskContext taskEntry)
         {
-            _logger = logger;
+
+            TaskResponse = taskEntry;
         }
 
         [HttpGet]
@@ -23,22 +26,91 @@ namespace mission08_group3_8.Controllers
         {
             return View();
         }
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Quadrant()
         {
-            return View();
+            var entries = TaskResponse.Responses
+                .Include(x => x.Category)
+                //.OrderBy(x => x.Title)
+                .ToList();
+            return View(entries);
         }
+        
         [HttpGet]
         public IActionResult TaskForm()
         {
+            ViewBag.Categories = TaskResponse.Categories.ToList();
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Quadrant()
+        [HttpPost]
+        public IActionResult TaskForm(ApplicationResponse ar)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                if(ar.Completed == false)
+                {
+                    TaskResponse.Add(ar);
+                    TaskResponse.SaveChanges();
+                    //return View("Confirmation", ar);
+                    return RedirectToAction("Quadrant");
+                }
+                else
+                {
+                    ViewBag.Categories = TaskResponse.Categories.ToList();
+                    return View();
+                }
+                
+            }
+            else
+            {
+                ViewBag.Categories = TaskResponse.Categories.ToList();
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit(int taskid)
+        {
+            ViewBag.Categories = TaskResponse.Categories.ToList();
+            var entry = TaskResponse.Responses.Single(x => x.TaskID == taskid);
+            return View("TaskForm", entry);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ApplicationResponse editedentry)
+        {
+            if (ModelState.IsValid)
+            {
+                TaskResponse.Update(editedentry);
+                TaskResponse.SaveChanges();
+                return RedirectToAction("Quadrant");
+
+            }
+            else
+            {
+                ViewBag.Categories = TaskResponse.Categories.ToList();
+                return View("Quadrant");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int taskid)
+        {
+
+            var entry = TaskResponse.Responses.Single(x => x.TaskID == taskid);
+            return View(entry);
+
+        }
+        [HttpPost]
+        public IActionResult Delete(ApplicationResponse removetask)
+        {
+            TaskResponse.Responses.Remove(removetask);
+            TaskResponse.SaveChanges();
+            return RedirectToAction("Quadrant");
         }
 
     }
 }
+

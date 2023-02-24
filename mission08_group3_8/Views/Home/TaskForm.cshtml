@@ -3,29 +3,30 @@
 @{
     ViewData["Title"] = "Task Form";
 }
-<!-- at model mission08_group3_8.Models.Task-->
+@model mission08_group3_8.Models.ApplicationResponse
 <form method="post">
     <div asp-validation-summary="All"></div>
-    <!--asp-for="Task">-->
-    <label>Task</label>
-    <input /> <br /><br />
-    <!--asp-for="Date"-->
-    <label>Due Date</label>
-    <input type="date" /><br /><br />
-    <!--asp-for="Quadrant"-->
-    <label>Quadrant</label>
-    <input /><br /><br />
-    <!--asp-for="Category"-->
-    <label>Category</label>
-    <select>
-        <option>Home</option>
-        <option>School</option>
-        <option>Work</option>
-        <option>Church</option>
+    
+    <label asp-for="Task">Task</label>
+    <input asp-for="Task"/> <br /><br />
+    
+    <label asp-for="DueDate">Due Date</label>
+    <input type="date" asp-for="DueDate"/><br /><br />
+   
+    <label asp-for="Quadrant">Quadrant</label>
+    <input asp-for="Quadrant"/><br /><br />
+    <!---->
+    <label asp-for="Category">Category</label>
+    <select asp-for="CategoryID">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryID">@c.CategoryName</option>
+        }
     </select><br /><br />
-    <!--asp-for="Completed"-->
-    <label>Completed</label>
-    <input type="radio" value="true" />Yes
-    <input type="radio" value="false" />No <br /><br />
+    <!---->
+    <label asp-for="Completed">Completed</label>
+    <input asp-for="Completed" type="radio" value="true" />Yes
+    <input asp-for="Completed" type="radio" value="false" />No <br /><br />
     <button type="submit">Submit</button>
 </form>

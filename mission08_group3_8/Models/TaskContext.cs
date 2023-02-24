@@ -13,8 +13,8 @@ namespace mission08_group3_8.Models
 
         }
 
-        public DbSet<ApplicationResponse> responses { get; set; }
-        public DbSet<Category> categories { get; set; }
+        public DbSet<ApplicationResponse> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Category>().HasData(
