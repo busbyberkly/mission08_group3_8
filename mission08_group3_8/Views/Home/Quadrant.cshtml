@@ -41,7 +41,7 @@
         <div class="curves col-1 heading">Important</div>
         <div class="form col-5">
             <p class="heading">Quadrant 1</p>
-            <table class="table table-bordered table-hover table-striped">
+            <table class="heading table-bordered table-hover table-striped">
                 <thead class="font-weight-bold">
                     <tr>
                         <td>Category</td>
@@ -63,8 +63,11 @@
                                     <td>@x.Task</td>
                                     <td>@x.DueDate</td>
                                     <td>@x.Completed</td>
-                                    <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
-                                    <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a> </td>
+                                    <td>
+                                        <a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a>
+                                        <p></p>
+                                        <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -75,7 +78,7 @@
         </div>
         <div class="form col-5">
             <p class="heading">Quadrant 2</p>
-            <table class="table table-bordered table-hover table-striped">
+            <table class="heading table-bordered table-hover table-striped">
                 <thead class="font-weight-bold">
                     <tr>
                         <td>Category</td>
@@ -94,8 +97,11 @@
                                 <td>@x.Task</td>
                                 <td>@x.DueDate</td>
                                 <td>@x.Completed</td>
-                                <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@x.TaskID">Edit</a></td>
-                                <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@x.TaskID">Delete</a> </td>
+                                <td>
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a>
+                                    <p></p>
+                                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a>
+                                </td>
                             </tr>
                         }
                     }
@@ -109,7 +115,7 @@
         <div class="curves col-1 heading">Not Important</div>
         <div class="form col-5">
             <p class="heading">Quadrant 3</p>
-            <table class="table table-bordered table-hover table-striped">
+            <table class="heading table-bordered table-hover table-striped">
                 <thead class="font-weight-bold">
                     <tr>
                         <td>Category</td>
@@ -128,8 +134,11 @@
                                 <td>@x.Task</td>
                                 <td>@x.DueDate</td>
                                 <td>@x.Completed</td>
-                                <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.TaskID">Edit</a></td>
-                                <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskID">Delete</a> </td>
+                                <td>
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a>
+                                    <p></p>
+                                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a> 
+                                </td>
                             </tr>
                         }
                     }
@@ -138,7 +147,7 @@
         </div>
         <div class="form col-5">
             <p class="heading">Quadrant 4</p>
-            <table class="table table-bordered table-hover table-striped">
+            <table class="heading table-bordered table-hover table-striped">
                 <thead class="font-weight-bold">
                     <tr>
                         <td>Category</td>
@@ -157,8 +166,11 @@
                                 <td>@x.Task</td>
                                 <td>@x.DueDate</td>
                                 <td>@x.Completed</td>
-                                <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.TaskID">Edit</a></td>
-                                <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskID">Delete</a> </td>
+                                <td>
+                                    <a asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskID">Edit</a>
+                                    <p></p>
+                                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskID">Delete</a>
+                                </td>
                             </tr>
                         }
                     }
