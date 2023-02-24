@@ -1,0 +1,170 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Quadrants";
+}
+
+@model List<ApplicationResponse>
+
+<!--Styles below. They will affect headings and grid layout-->
+<style>
+
+    .form {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        background-color: rgb(239 239 239);
+        border: 1px solid rgba(86,61,124,.2);
+    }
+    .curves {
+        border-radius: 5px;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: rgba(86,61,124,.15);
+        border: 1px solid rgb(171 171 171);
+    }
+    .heading {
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
+<!--first row holds headings-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="curves col-5 heading">Urgent</div>
+        <div class="curves col-5 heading">Not Urgent</div>
+    </div>
+
+<!-- second row holds first two quadrants each will display tasks in a grid chart within the quadrant-->
+    <div class="row">
+        <div class="curves col-1 heading">Important</div>
+        <div class="form col-5">
+            <p class="heading">Quadrant 1</p>
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="font-weight-bold">
+                    <tr>
+                        <td>Category</td>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Complete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                   <!-- run through each of the elements and for every one that belongs in the quadrant
+                       output it inside (as long as it isn't completed yet) -->
+                    @foreach (var x in Model)
+                        {
+                            @if ((x.Quadrant == 1) && (x.Completed == false))
+                            {
+                                <tr>
+                                    <td>@x.Category</td>
+                                    <td>@x.Task</td>
+                                    <td>@x.Date</td>
+                                    <td>@x.Completed</td>
+                                    <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.ApplicationId">Edit</a></td>
+                                    <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.ApplicationId">Delete</a> </td>
+                                </tr>
+                            }
+                        }
+                </tbody>
+             </table>
+                
+
+        </div>
+        <div class="form col-5">
+            <p class="heading">Quadrant 2</p>
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="font-weight-bold">
+                    <tr>
+                        <td>Category</td>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Complete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        @if ((x.Quadrant == 2) && (x.Completed == false))
+                        {
+                            <tr>
+                                <td>@x.Category</td>
+                                <td>@x.Task</td>
+                                <td>@x.Date</td>
+                                <td>@x.Completed</td>
+                                <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.ApplicationId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.ApplicationId">Delete</a> </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- quadrants 3 and 4 held in this row.-->
+    <div class="row">
+        <div class="curves col-1 heading">Not Important</div>
+        <div class="form col-5">
+            <p class="heading">Quadrant 3</p>
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="font-weight-bold">
+                    <tr>
+                        <td>Category</td>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Complete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        @if ((x.Quadrant == 3) && (x.Completed == false))
+                        {
+                            <tr>
+                                <td>@x.Category</td>
+                                <td>@x.Task</td>
+                                <td>@x.Date</td>
+                                <td>@x.Completed</td>
+                                <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.ApplicationId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.ApplicationId">Delete</a> </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form col-5">
+            <p class="heading">Quadrant 4</p>
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="font-weight-bold">
+                    <tr>
+                        <td>Category</td>
+                        <td>Task</td>
+                        <td>Due Date</td>
+                        <td>Complete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        @if ((x.Quadrant == 4) && (x.Completed == false))
+                        {
+                            <tr>
+                                <td>@x.Category</td>
+                                <td>@x.Task</td>
+                                <td>@x.Date</td>
+                                <td>@x.Completed</td>
+                                <td><a asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.ApplicationId">Edit</a></td>
+                                <td><a asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.ApplicationId">Delete</a> </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
