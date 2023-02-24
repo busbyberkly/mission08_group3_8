@@ -74,6 +74,32 @@ namespace mission08_group3_8.Controllers
             return RedirectToAction("Quadrant");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int taskid)
+        {
+            ViewBag.Categories = TaskContext.categories.ToList();
 
+            var application = TaskContext.responses.Single(x => x.TaskID == taskid);
+
+            return View("TaskForm", application);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ApplicationResponse ar)
+        {
+            if (ModelState.IsValid)
+            {
+                TaskContext.Update(ar);
+                TaskContext.SaveChanges();
+
+                return RedirectToAction("Quadrant");
+            }
+            else
+            {
+                ViewBag.Categories = TaskContext.categories.ToList();
+                return View("Quadrant");
+            }
+
+        }
     }
 }
