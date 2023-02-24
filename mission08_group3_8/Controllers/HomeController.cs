@@ -24,7 +24,7 @@ namespace mission08_group3_8.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Dashboard()
+        public IActionResult Quadrant()
         {
             return View();
         }
