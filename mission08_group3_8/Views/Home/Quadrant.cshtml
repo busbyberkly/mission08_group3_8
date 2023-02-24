@@ -58,7 +58,7 @@
                             @if ((x.Quadrant == 1) && (x.Completed == false))
                             {
                                 <tr>
-                                    <td>@x.Category</td>
+                                    <td>@x.Category.CategoryName</td>
                                     <td>@x.Task</td>
                                     <td>@x.DueDate</td>
                                     <td>@x.Completed</td>
@@ -89,7 +89,7 @@
                         @if ((x.Quadrant == 2) && (x.Completed == false))
                         {
                             <tr>
-                                <td>@x.Category</td>
+                                <td>@x.Category.CategoryName</td>
                                 <td>@x.Task</td>
                                 <td>@x.DueDate</td>
                                 <td>@x.Completed</td>
@@ -123,7 +123,7 @@
                         @if ((x.Quadrant == 3) && (x.Completed == false))
                         {
                             <tr>
-                                <td>@x.Category</td>
+                                <td>@x.Category.CategoryName</td>
                                 <td>@x.Task</td>
                                 <td>@x.DueDate</td>
                                 <td>@x.Completed</td>
@@ -152,7 +152,7 @@
                         @if ((x.Quadrant == 4) && (x.Completed == false))
                         {
                             <tr>
-                                <td>@x.Category</td>
+                                <td>@x.Category.CategoryName</td>
                                 <td>@x.Task</td>
                                 <td>@x.DueDate</td>
                                 <td>@x.Completed</td>
