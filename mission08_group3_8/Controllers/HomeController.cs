@@ -34,11 +34,5 @@ namespace mission08_group3_8.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Quadrant()
-        {
-            return View();
-        }
-
     }
 }
