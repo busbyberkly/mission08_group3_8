@@ -32,7 +32,7 @@ namespace mission08_group3_8.Controllers
         {
             var entries = TaskResponse.Responses
                 .Include(x => x.Category)
-                //.OrderBy(x => x.Title)
+                .OrderBy(x => x.DueDate)
                 .ToList();
             return View(entries);
         }
