@@ -32,10 +32,30 @@ namespace mission08_group3_8.Controllers
             var tasks = TaskContext.responses.Include(x => x.Category).ToList();
             return View(tasks);
         }
+
         [HttpGet]
         public IActionResult TaskForm()
         {
+            ViewBag.Categories = TaskContext.categories.ToList();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult TaskForm(ApplicationResponse ar)
+        {
+            if (ModelState.IsValid)
+            {
+                TaskContext.Add(ar);
+                TaskContext.SaveChanges();
+
+                return RedirectToAction("Quadrant");
+            }
+            else
+            {
+                ViewBag.Categories = TaskContext.categories.ToList();
+
+                return View(ar);
+            }
         }
 
 
