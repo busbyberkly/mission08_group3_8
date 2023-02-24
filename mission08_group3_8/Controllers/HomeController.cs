@@ -58,6 +58,22 @@ namespace mission08_group3_8.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Delete(int taskid)
+        {
+            var task = TaskContext.responses.Single(x => x.TaskID == taskid);
+            return View(task);
+        }
+
+
+        [HttpPost]
+        public IActionResult Delete(ApplicationResponse ar)
+        {
+            TaskContext.responses.Remove(ar);
+            TaskContext.SaveChanges();
+            return RedirectToAction("Quadrant");
+        }
+
 
     }
 }
