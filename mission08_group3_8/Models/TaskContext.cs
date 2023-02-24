@@ -32,7 +32,7 @@ namespace mission08_group3_8.Models
                     Task = "Finish Midterm",
                     CategoryID = 2,
                     Completed = false,
-                    DueDate = "Wednesday",
+                    DueDate = "03-01-2023",
                     Quadrant = 1,
 
                     
